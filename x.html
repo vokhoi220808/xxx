@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Né Xe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="420" height="640"></canvas>
+
+  <div id="ui">
+    <div class="panel">Score: <span id="score">0</span><br>Best: <span id="best">0</span></div>
+    <div class="panel">Nitro
+      <div class="meter"><i id="nitroMeter"></i></div>
+    </div>
+    <div class="panel">Speed: <span id="speed">1.0</span>x<br><span class="btnhint">Space = Nitro</span></div>
+  </div>
+</div>
+<div id="popup" style="display:none;">
+  <div id="popupContent">
+    <p id="questionText"></p>
+    <input type="text" id="answerInput" placeholder="Nhập câu trả lời"/>
+    <button id="submitAnswer">Xác nhận</button>
+    <button id="giveUp">Từ bỏ</button>
+  </div>
+</div>
+
+
+<script src="game.js"></script>
+</body>
+</html>
