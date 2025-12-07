@@ -267,3 +267,96 @@ int main(){
         cout<<1;
     }
 }
+======================================================================
+TAO XAU
+
+
+#include <iostream>
+using namespace std;
+int n;
+char X[20];
+void Try(int i) {
+    X[i] = 'A';
+    if (i == n - 1) {
+        for (int j = 0; j < n; j++) cout << X[j];
+        cout << endl;
+    } else {
+        Try(i + 1);
+    }
+    if (i == 0 || X[i - 1] != 'B') {
+        X[i] = 'B';
+        if (i == n - 1) {
+            for (int j = 0; j < n; j++) cout << X[j];
+            cout << endl;
+        } else {
+            Try(i + 1);
+        }
+    }
+}
+
+int main() {
+    cin >> n;
+    Try(0);
+    return 0;
+}
+=====================================================
+CAI TUI
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, W;
+    cin >> n >> W;
+
+    vector<int> w(n+1), v(n+1);
+    for (int i = 1; i <= n; i++) {
+        cin >> w[i] >> v[i];
+    }
+    vector<int> dp(W+1, 0);
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = W; j >= w[i]; j--) {
+            dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+        }
+    }
+
+    cout << dp[W] << "\n";
+
+    return 0;
+}
+
+==============================================================
+QUAN HAU
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+int countWays = 0;
+bool col[12];     
+bool diag1[23];   
+bool diag2[23];      
+
+void backtrack(int row) {
+    if (row == n) {
+        countWays++;
+        return;
+    }
+    for (int c = 0; c < n; c++) {
+        if (!col[c] && !diag1[row+c] && !diag2[row-c+n-1]) {
+            col[c] = diag1[row+c] = diag2[row-c+n-1] = true;
+            backtrack(row + 1);
+            col[c] = diag1[row+c] = diag2[row-c+n-1] = false;
+        }
+    }
+}
+int main() {
+    cin >> n;
+    for(int i=0;i<12;i++) col[i] = false;
+    for(int i=0;i<23;i++) diag1[i] = diag2[i] = false;
+    backtrack(0);
+    cout << countWays << endl;
+    return 0;
+}
